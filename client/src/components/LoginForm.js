@@ -1,5 +1,5 @@
 // see SignupForm.js for comments
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 // import { loginUser } from '../utils/API';
@@ -43,9 +43,9 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
 
-      if (!data.ok) {
-        throw new Error("something went wrong!");
-      }
+      // if (!data.ok) {
+      //   throw new Error("something went wrong!");
+      // }
 
       console.log(data);
       Auth.login(data.login.token);

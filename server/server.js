@@ -7,7 +7,6 @@ const { ApolloServer } = require("apollo-server-express");
 
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
-const db = require("./config/connection");
 
 const server = new ApolloServer({
   typeDefs,
@@ -27,16 +26,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
-
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/database-three",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
 
 // app.use(routes);
 
